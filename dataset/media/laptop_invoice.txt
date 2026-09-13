@@ -1,0 +1,8 @@
+# Document OCR & Context Log for laptop_invoice.png
+Document Type: Commercial Invoice
+Vendor: Apple Store
+Item: MacBook Air M3 15-inch
+Base Price: $1199.00
+Tax: $0.00 (Promotion)
+Promotional Notes: Eligible for 0% APR 3-month or 6-month equal payments ($399.67/mo or $199.83/mo).
+User Note: "Needed for remote freelance programming client."

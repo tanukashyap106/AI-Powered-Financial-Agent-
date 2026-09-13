@@ -1,0 +1,79 @@
+{
+  "USER_101": {
+    "user_id": "USER_101",
+    "name": "Alice Johnson",
+    "current_balance": 4500.00,
+    "min_buffer_balance": 1000.00,
+    "pay_day_1": 1,
+    "pay_day_2": 15,
+    "paycheck_amount": 2200.00,
+    "essential_expenses": [
+      {"name": "Rent", "amount": 1200.00, "due_day": 1, "category": "Housing"},
+      {"name": "Groceries", "amount": 400.00, "due_day": 5, "category": "Food"},
+      {"name": "Utilities", "amount": 150.00, "due_day": 10, "category": "Utilities"}
+    ],
+    "recurring_subscriptions": [
+      {"name": "Streaming & Gym", "amount": 80.00, "due_day": 12, "flexible": true, "category": "Subscriptions"}
+    ],
+    "pending_commitments": [
+      {"name": "Car Maintenance", "amount": 250.00, "due_date": "2026-09-18", "category": "Automotive"}
+    ],
+    "flexible_monthly_spending": 300.00
+  },
+  "USER_102": {
+    "user_id": "USER_102",
+    "name": "Bob Smith",
+    "current_balance": 1400.00,
+    "min_buffer_balance": 500.00,
+    "pay_day_1": 20,
+    "paycheck_amount": 1600.00,
+    "essential_expenses": [
+      {"name": "Rent", "amount": 1100.00, "due_day": 1, "category": "Housing"},
+      {"name": "Insurance & Bills", "amount": 250.00, "due_day": 5, "category": "Bills"}
+    ],
+    "recurring_subscriptions": [
+      {"name": "Subscriptions", "amount": 50.00, "due_day": 15, "flexible": true, "category": "Entertainment"}
+    ],
+    "pending_commitments": [
+      {"name": "Student Loan", "amount": 150.00, "due_date": "2026-09-18", "category": "Debt"}
+    ],
+    "flexible_monthly_spending": 200.00
+  },
+  "USER_103": {
+    "user_id": "USER_103",
+    "name": "Charlie Davis",
+    "current_balance": 850.00,
+    "min_buffer_balance": 300.00,
+    "pay_day_1": 15,
+    "paycheck_amount": 1800.00,
+    "essential_expenses": [
+      {"name": "Room Rent", "amount": 600.00, "due_day": 1, "category": "Housing"},
+      {"name": "Food & Travel", "amount": 250.00, "due_day": 10, "category": "Essentials"}
+    ],
+    "recurring_subscriptions": [
+      {"name": "Gaming Subscription", "amount": 20.00, "due_day": 8, "flexible": true, "category": "Gaming"}
+    ],
+    "pending_commitments": [],
+    "flexible_monthly_spending": 100.00
+  },
+  "USER_104": {
+    "user_id": "USER_104",
+    "name": "Diana Prince",
+    "current_balance": 9500.00,
+    "min_buffer_balance": 2000.00,
+    "pay_day_1": 15,
+    "pay_day_2": 30,
+    "paycheck_amount": 4000.00,
+    "essential_expenses": [
+      {"name": "Mortgage", "amount": 2400.00, "due_day": 1, "category": "Housing"},
+      {"name": "Family Healthcare", "amount": 600.00, "due_day": 5, "category": "Health"}
+    ],
+    "recurring_subscriptions": [
+      {"name": "Luxury Fitness & Club", "amount": 300.00, "due_day": 10, "flexible": true, "category": "Lifestyle"}
+    ],
+    "pending_commitments": [
+      {"name": "Property Tax Quarter", "amount": 1200.00, "due_date": "2026-09-28", "category": "Taxes"}
+    ],
+    "flexible_monthly_spending": 600.00
+  }
+}

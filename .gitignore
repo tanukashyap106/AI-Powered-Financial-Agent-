@@ -1,0 +1,23 @@
+# Python & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+
+# Temporary & Build Artifacts
+build/
+dist/
+*.egg-info/
+code.zip
+
+# Large data corpus (excluded from code repo zip per HackerRank rules)
+dataset/media/*.png
+dataset/media/*.jpg
+dataset/media/*.jpeg

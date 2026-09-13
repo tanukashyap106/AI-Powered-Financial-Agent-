@@ -1,0 +1,9 @@
+request_id,user_id,request_date,item_description,item_category,total_cost,payment_options,user_prompt,image_path,expected_status
+REQ_001,USER_101,2026-09-14,MacBook Air M3,Electronics,1199.00,"PAY_IN_FULL,INSTALLMENTS_3M,INSTALLMENTS_6M","Can I afford this laptop for work? I can pay full or split over 3 or 6 months.",dataset/media/laptop_invoice.png,AFFORDABLE_NOW
+REQ_002,USER_102,2026-09-14,Gaming PC Rig,Electronics,1800.00,"PAY_IN_FULL,INSTALLMENTS_6M","Want to buy this gaming rig today. Can I afford it?",dataset/media/pc_quote.png,AFFORDABLE_WITH_PLAN
+REQ_003,USER_103,2026-09-14,Electric Scooter,Transportation,650.00,"PAY_IN_FULL,INSTALLMENTS_3M","I need this scooter for commuting to work. Can I get it today?",dataset/media/scooter_receipt.png,AFFORDABLE_WITH_PLAN
+REQ_004,USER_104,2026-09-14,Family Vacation Package,Travel,3200.00,"PAY_IN_FULL,INSTALLMENTS_3M,INSTALLMENTS_6M","Can we book the Hawaii trip for next month?",dataset/media/vacation_flyer.png,AFFORDABLE_NOW
+REQ_005,USER_102,2026-09-14,Designer Leather Jacket,Apparel,950.00,"PAY_IN_FULL","Should I buy this designer jacket on sale right now?",dataset/media/jacket_tag.png,NOT_AFFORDABLE
+REQ_006,USER_101,2026-09-14,Dental Implants Surgery,Healthcare,2400.00,"PAY_IN_FULL,INSTALLMENTS_6M","My dentist says I need implant procedure. Attached doctor note.",dataset/media/dental_estimate.png,AFFORDABLE_WITH_PLAN
+REQ_007,USER_103,2026-09-14,Used Smartphone,Electronics,220.00,"PAY_IN_FULL","My phone broke today. Can I buy this used phone outright?",dataset/media/phone_listing.png,AFFORDABLE_NOW
+REQ_008,USER_104,2026-09-14,Luxury Watch Collection,Jewelry,7500.00,"PAY_IN_FULL","Limited edition watch available today. Can I afford it?",dataset/media/watch_offer.png,AFFORDABLE_LATER
