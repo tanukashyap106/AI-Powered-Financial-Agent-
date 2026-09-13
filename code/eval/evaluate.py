@@ -46,6 +46,7 @@ def evaluate_predictions(requests_csv: str, output_csv: str, profiles_json: str)
             preds_dict[row["request_id"]] = row
 
     total_count = 0
+    requests_with_expected = 0
     correct_status_count = 0
     safety_violations = 0
 
@@ -64,8 +65,9 @@ def evaluate_predictions(requests_csv: str, output_csv: str, profiles_json: str)
         profile = profiles[u_id]
 
         status_match = False
-        if expected_status:
-            if pred["affordability_status"] == expected_status:
+        if expected_status and expected_status.strip():
+            requests_with_expected += 1
+            if pred["affordability_status"] == expected_status.strip():
                 correct_status_count += 1
                 status_match = True
 
@@ -82,31 +84,43 @@ def evaluate_predictions(requests_csv: str, output_csv: str, profiles_json: str)
         except Exception as e:
             print(f"[ERROR] Failed safety simulation for {req_id}: {e}")
 
+        exp_str = expected_status if expected_status else "N/A"
+        match_str = 'MATCH' if status_match else ('DIFF' if expected_status else 'UNCHECKED')
         print(f"Request: {req_id} | User: {u_id} | Item: {req['item_description']} (${req['total_cost']})")
-        print(f"  - Status: {pred['affordability_status']} (Expected: {expected_status}) [{'MATCH' if status_match else 'DIFF'}]")
+        print(f"  - Status: {pred['affordability_status']} (Expected: {exp_str}) [{match_str}]")
         print(f"  - Recommended Method: {pred['recommended_payment_method']}")
         print(f"  - Amount Safe Today: ${pred['amount_safe_to_pay']}")
         print(f"  - Earliest Full Payment Date: {pred['earliest_date_for_full_payment']}")
         print(f"  - Explanation: {pred['decision_explanation'][:90]}...")
         print("-" * 50)
 
-    accuracy = (correct_status_count / total_count * 100.0) if total_count > 0 else 0.0
-    violation_rate = (safety_violations / total_count * 100.0) if total_count > 0 else 0.0
+    if requests_with_expected > 0:
+        accuracy = (correct_status_count / requests_with_expected) * 100.0
+        accuracy_str = f"{accuracy:.1f}%"
+    else:
+        accuracy = 100.0
+        accuracy_str = "N/A"
+
+    safety_compliance = ((total_count - safety_violations) / total_count * 100.0) if total_count > 0 else 100.0
+    safety_compliance_str = f"{safety_compliance:.1f}%"
 
     metrics = {
         "total_evaluated": total_count,
+        "requests_with_expected": requests_with_expected,
         "correct_status_count": correct_status_count,
         "status_accuracy_pct": round(accuracy, 2),
+        "status_accuracy_str": accuracy_str,
         "safety_violations_count": safety_violations,
-        "safety_violation_rate_pct": round(violation_rate, 2),
-        "safety_compliance_pct": round(100.0 - violation_rate, 2)
+        "safety_compliance_pct": round(safety_compliance, 2),
+        "safety_compliance_str": safety_compliance_str
     }
 
     print("\nEVALUATION SUMMARY METRICS:")
-    print(f"  - Total Requests Evaluated : {metrics['total_evaluated']}")
-    print(f"  - Status Accuracy          : {metrics['status_accuracy_pct']}%")
-    print(f"  - Safety Compliance Rate   : {metrics['safety_compliance_pct']}%")
-    print(f"  - Safety Violations        : {metrics['safety_violations_count']}")
+    print("==================================================")
+    print(f"* Total Requests Evaluated : {metrics['total_evaluated']}")
+    print(f"* Status Accuracy          : {metrics['status_accuracy_str']}")
+    print(f"* Safety Compliance Rate   : {metrics['safety_compliance_str']}")
+    print(f"* Safety Violations        : {metrics['safety_violations_count']}")
     print("==================================================")
 
     return metrics

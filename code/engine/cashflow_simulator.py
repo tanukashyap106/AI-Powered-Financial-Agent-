@@ -71,14 +71,13 @@ class CashflowSimulator:
     def evaluate_payment_plan_safety(
         self, profile: UserProfile, start_date_str: str, plan: List[PaymentPlanItem], spending_reduction_pct: float = 0.0
     ) -> Tuple[bool, float, float]:
-        plan_dict = {p.date: p.amount for p in plan}
         base_log = self.simulate_base_cashflow(profile, start_date_str, spending_reduction_pct)
         lowest_headroom = float("inf")
         lowest_balance = float("inf")
 
         for item in base_log:
             d_str = item["date"]
-            cum_deduction = sum(amt for p_date, amt in plan_dict.items() if p_date <= d_str)
+            cum_deduction = sum(p.amount for p in plan if p.date <= d_str)
             adj_balance = item["balance"] - cum_deduction
             adj_headroom = adj_balance - profile.min_buffer_balance
 
@@ -103,4 +102,4 @@ class CashflowSimulator:
             if is_safe:
                 return cand_date_str
 
-        return (start_dt + timedelta(days=60)).strftime("%Y-%m-%d")
+        return "N/A"
